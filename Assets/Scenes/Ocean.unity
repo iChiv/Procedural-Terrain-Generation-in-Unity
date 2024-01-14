@@ -156,7 +156,7 @@ MonoBehaviour:
   size: 512
   wavesSettings: {fileID: 11400000, guid: 2b52ce23bf97da2419dbd51f2c478c9d, type: 2}
   lengthScale0: 250
-  lengthScale1: 17
+  lengthScale1: 5
   lengthScale2: 5
   fftShader: {fileID: 7200000, guid: e8b68560caa8ba54d93a37e4ea7b53b4, type: 3}
   initialSpectrumShader: {fileID: 7200000, guid: 8ca6a6b2644251a41b6ba915a5b057ec, type: 3}

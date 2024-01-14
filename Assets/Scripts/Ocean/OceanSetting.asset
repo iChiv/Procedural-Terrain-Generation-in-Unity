@@ -14,22 +14,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   g: 50.6
   depth: 657
-  lambda: 0.301
+  lambda: 0.156
   local:
-    scale: 0.079
-    windSpeed: 300
-    windDirection: 900
+    scale: 0.211
+    windSpeed: 726.1
+    windDirection: 903.3
     fetch: 115432
-    spreadBlend: 0.86
-    swell: 0.892
+    spreadBlend: 0.992
+    swell: 1
     peakEnhancement: 550
     shortWavesFade: 0.05
   swell:
-    scale: 0.622
-    windSpeed: 330.1
-    windDirection: 500
+    scale: 0.133
+    windSpeed: 2001.1
+    windDirection: 509.9
     fetch: 286481
-    spreadBlend: 0.9
-    swell: 0.5
+    spreadBlend: 0.841
+    swell: 0.915
     peakEnhancement: 3.24
     shortWavesFade: 50

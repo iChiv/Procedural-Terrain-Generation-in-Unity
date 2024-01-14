@@ -38,21 +38,6 @@ public class OceanGeometry : MonoBehaviour
         InstantiateMeshes();
     }
 
-    private void Update()
-    {
-        //UpdatePositions();
-    }
-
-    void UpdatePositions()
-    {
-        // 计算网格大小
-        int k = GridSize();
-
-        // 设置中心网格的位置和缩放
-        mesh.Transform.position = Snap(camera.position, lengthScale * 2);
-        mesh.Transform.localScale = new Vector3(lengthScale, 1, lengthScale);
-    }
-
     int GridSize()
     {
         return 4 * vertexDensity + 1;
@@ -77,7 +62,7 @@ public class OceanGeometry : MonoBehaviour
 
         // 创建中心网格
         int k = GridSize();
-        mesh = InstantiateElement("Mesh", CreatePlaneMesh(k, k, 50), oceanMaterial);
+        mesh = InstantiateElement("Ocean Plane", CreatePlaneMesh(k, k, 50), oceanMaterial);
     }
 
     Element InstantiateElement(string name, Mesh mesh, Material mat)
