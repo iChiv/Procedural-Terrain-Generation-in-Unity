@@ -9,20 +9,6 @@ public class FastFourierTransform
     readonly ComputeShader fftShader;
     readonly RenderTexture precomputedData;
 
-    public static RenderTexture CreateRenderTexture(int size, RenderTextureFormat format = RenderTextureFormat.RGFloat, bool useMips = false)
-    {
-        RenderTexture rt = new RenderTexture(size, size, 0,
-            format, RenderTextureReadWrite.Linear);
-        rt.useMipMap = useMips;
-        rt.autoGenerateMips = false;
-        rt.anisoLevel = 6;
-        rt.filterMode = FilterMode.Trilinear;
-        rt.wrapMode = TextureWrapMode.Repeat;
-        rt.enableRandomWrite = true;
-        rt.Create();
-        return rt;
-    }
-
     public FastFourierTransform(int size, ComputeShader fftShader)
     {
         this.size = size;
@@ -36,6 +22,20 @@ public class FastFourierTransform
         KERNEL_VERTICAL_STEP_IFFT = fftShader.FindKernel("VerticalStepInverseFFT");
         KERNEL_SCALE = fftShader.FindKernel("Scale");
         KERNEL_PERMUTE = fftShader.FindKernel("Permute");
+    }
+
+    public static RenderTexture CreateRenderTexture(int size, RenderTextureFormat format = RenderTextureFormat.RGFloat, bool useMips = false)
+    {
+        RenderTexture rt = new RenderTexture(size, size, 0,
+            format, RenderTextureReadWrite.Linear);
+        rt.useMipMap = useMips;
+        rt.autoGenerateMips = false;
+        rt.anisoLevel = 6;
+        rt.filterMode = FilterMode.Trilinear;
+        rt.wrapMode = TextureWrapMode.Repeat;
+        rt.enableRandomWrite = true;
+        rt.Create();
+        return rt;
     }
 
     public void FFT2D(RenderTexture input, RenderTexture buffer, bool outputToInput = false)

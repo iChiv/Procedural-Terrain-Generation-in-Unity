@@ -40,7 +40,7 @@ public class OceanGeometry : MonoBehaviour
 
     private void Update()
     {
-        UpdatePositions();
+        //UpdatePositions();
     }
 
     void UpdatePositions()
@@ -77,7 +77,7 @@ public class OceanGeometry : MonoBehaviour
 
         // 创建中心网格
         int k = GridSize();
-        mesh = InstantiateElement("Mesh", CreatePlaneMesh(k, k, 1), oceanMaterial);
+        mesh = InstantiateElement("Mesh", CreatePlaneMesh(k, k, 50), oceanMaterial);
     }
 
     Element InstantiateElement(string name, Mesh mesh, Material mat)

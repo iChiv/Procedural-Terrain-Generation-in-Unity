@@ -178,7 +178,7 @@ MonoBehaviour:
   camera: {fileID: 2131942037}
   oceanMaterial: {fileID: 2100000, guid: a61f8f0ffdb334340b0e49a09d72e156, type: 2}
   lengthScale: 10
-  vertexDensity: 30
+  vertexDensity: 40
 --- !u!4 &1167023461
 Transform:
   m_ObjectHideFlags: 0
