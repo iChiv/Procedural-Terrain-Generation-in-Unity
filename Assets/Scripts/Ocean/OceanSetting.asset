@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffbda90db042d4a4d80d93cfab963d1f, type: 3}
+  m_Name: OceanSetting
+  m_EditorClassIdentifier: 
+  g: 50.6
+  depth: 657
+  lambda: 0.301
+  local:
+    scale: 0.079
+    windSpeed: 300
+    windDirection: 900
+    fetch: 115432
+    spreadBlend: 0.86
+    swell: 0.892
+    peakEnhancement: 550
+    shortWavesFade: 0.05
+  swell:
+    scale: 0.622
+    windSpeed: 330.1
+    windDirection: 500
+    fetch: 286481
+    spreadBlend: 0.9
+    swell: 0.5
+    peakEnhancement: 3.24
+    shortWavesFade: 50
