@@ -7,6 +7,8 @@ public class NoisMapGenerator : MonoBehaviour
     
     public static NoisMapGenerator instance;
 
+    public enum TerrainType { PerlinNoise, MidPointDisplacement}
+    public TerrainType terrainType;
 
     public int mapchunkSize = 241;
     [Range(0,6)]
@@ -62,13 +64,15 @@ public class NoisMapGenerator : MonoBehaviour
         {
             GenerateMap();
         }
+
+        GenerateMap();
     }
 
     //generate map
     public void GenerateMap()
     {
         float[,] noiseMap = PerlinNoise.instance.GeneratePerlinNoiseMap(mapWidth, mapHeight, seed, noiseScale, octaves, persistance, lacunarity, offset);
-        float[,] heightMap = MidPointDisplacement.instance.MidpointDisplacement(mapWidth, roughness, noiseScale);
+        float[,] heightMap = MidPointDisplacement.instance.MidpointDisplacement(mapWidth, roughness, noiseScale, seed);
         Debug.Log(heightMap.Length);
         Color[] colourMap = new Color[mapWidth * mapHeight];
 
@@ -77,8 +81,17 @@ public class NoisMapGenerator : MonoBehaviour
         float maxHeight = meshHeightMultiplier * meshHeightCurve.Evaluate(1);
         SetMaterial(terrainMaterial, minHeight, maxHeight);
         ApplyToMaterial(terrainMaterial);
-        //DrawMeshWithMaterial(MeshGenerator.instance.GenerateTrrainMesh(noiseMap, meshHeightMultiplier, meshHeightCurve, levelOfDetail), terrainMaterial);
-        DrawMeshWithMaterial(HK_MeshGenerator.instance.GenerateTrrainMesh(heightMap, meshHeightMultiplier, meshHeightCurve, levelOfDetail), terrainMaterial);
+        switch(terrainType)
+        {
+            case TerrainType.PerlinNoise:
+                DrawMeshWithMaterial(HK_MeshGenerator.instance.GenerateTrrainMesh(noiseMap, meshHeightMultiplier, meshHeightCurve, levelOfDetail), terrainMaterial);
+                break;
+            case TerrainType.MidPointDisplacement:
+                DrawMeshWithMaterial(HK_MeshGenerator.instance.GenerateTrrainMesh(heightMap, meshHeightMultiplier, meshHeightCurve, levelOfDetail), terrainMaterial);
+                break;
+        }
+        //DrawMeshWithMaterial(HK_MeshGenerator.instance.GenerateTrrainMesh(noiseMap, meshHeightMultiplier, meshHeightCurve, levelOfDetail), terrainMaterial);
+        //DrawMeshWithMaterial(HK_MeshGenerator.instance.GenerateTrrainMesh(heightMap, meshHeightMultiplier, meshHeightCurve, levelOfDetail), terrainMaterial);
     }
 
     public void DrawMeshWithMaterial(MeshData meshData, Material material)

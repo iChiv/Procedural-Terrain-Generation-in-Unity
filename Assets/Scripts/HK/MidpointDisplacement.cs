@@ -9,12 +9,14 @@ public class MidPointDisplacement : MonoBehaviour
     {
         instance = this;
     }
-    public float[,] MidpointDisplacement(int size, float roughness, float noiseScale)
+    public float[,] MidpointDisplacement(int size, float roughness, float noiseScale, int seed)
     {
-        //size = size + 1;
+        size = size + 1;
         float[,] heights = new float[size, size];
 
         // Initialize corner heights
+        System.Random prng = new System.Random(seed);
+        Random.InitState(seed);
         heights[0, 0] = Random.Range(0f, 1f);
         heights[0, size - 1] = Random.Range(0f, 1f);
         heights[size - 1, 0] = Random.Range(0f, 1f);
