@@ -891,7 +891,9 @@ MonoBehaviour:
   - 0
   - 0.406
   baseBlends: []
+  size: 0
   roughness: 2.93
+  meshHeightMultiplier2: 0
   textureRender: {fileID: 546244550}
   meshFilter: {fileID: 546244551}
   meshRenderer: {fileID: 546244550}

@@ -46,23 +46,6 @@ public class UIManager : MonoBehaviour
         perlinNoisePanel.SetActive(true);
         midPointDisplacementPanel.SetActive(false);
 
-        if(NoisMapGenerator.instance.size == 256)
-        {
-            ScaleAddButton.interactable = false;
-        }
-        else
-        {
-            ScaleAddButton.interactable = true;
-        }
-        if(NoisMapGenerator.instance.size == 2)
-        {
-            ScaleSubButton.interactable = false;
-        }
-        else
-        {
-            ScaleSubButton.interactable = true;
-        }
-
         //PerlinNoise
         NoiseScaleSlider.value = NoisMapGenerator.instance.noiseScale;
         OctavesSlider.value = NoisMapGenerator.instance.octaves;
@@ -109,12 +92,24 @@ public class UIManager : MonoBehaviour
     }
     void Update()
     {
+        Debug.Log("NoisMapGenerator.instance.size");
 
-        // if(Input.GetKeyDown(KeyCode.Q))
-        // {
-        //     isHide = !isHide;
-        //     canvas.SetActive(isHide);
-        // }
+        if(NoisMapGenerator.instance.size >= 256)
+        {
+            ScaleAddButton.interactable = false;
+        }
+        else
+        {
+            ScaleAddButton.interactable = true;
+        }
+        if(NoisMapGenerator.instance.size <= 2)
+        {
+            ScaleSubButton.interactable = false;
+        }
+        else
+        {
+            ScaleSubButton.interactable = true;
+        }
     }
 
     public void OnTerrianTypeValueChanged(int value)
@@ -144,7 +139,7 @@ public class UIManager : MonoBehaviour
     public void GetScaleValue()
     {
         string scale = Scale.text;
-        if (int.TryParse(scale, out int intValue) && intValue>0 && intValue < 600)
+        if (int.TryParse(scale, out int intValue) && intValue>0 && intValue < 256)
         {
             Debug.Log("int" + intValue);
 
