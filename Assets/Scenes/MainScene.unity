@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.2695432, g: 0.37804082, b: 0.5206003, a: 1}
+  m_IndirectSpecularColor: {r: 0.2695136, g: 0.37799448, b: 0.5205699, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1181,6 +1181,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fbfb27b3c66390b469518c029da6ef7a, type: 3}
+--- !u!114 &869716144 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5604120188239131730, guid: c6fcf4c1fa92ecc468a98b7f48b11c63, type: 3}
+  m_PrefabInstance: {fileID: 320006528}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6cea564e8d07324d8870781df685126, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &895812786 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6797696864729319123, guid: 9558707c5822f7347ba1d461d7adc35f, type: 3}
@@ -1547,6 +1558,18 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1093424907612627490, guid: 8fbcc622e7847f14a93b261be976dad6, type: 3}
+      propertyPath: m_Value
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1093424907612627490, guid: 8fbcc622e7847f14a93b261be976dad6, type: 3}
+      propertyPath: m_MaxValue
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1093424907612627490, guid: 8fbcc622e7847f14a93b261be976dad6, type: 3}
+      propertyPath: m_MinValue
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1183485799970300769, guid: 8fbcc622e7847f14a93b261be976dad6, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1683,6 +1706,14 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2365498515328504013, guid: 8fbcc622e7847f14a93b261be976dad6, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 869716144}
+    - target: {fileID: 2365498515328504013, guid: 8fbcc622e7847f14a93b261be976dad6, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetScale1
+      objectReference: {fileID: 0}
     - target: {fileID: 2621372343917558111, guid: 8fbcc622e7847f14a93b261be976dad6, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -1726,6 +1757,14 @@ PrefabInstance:
     - target: {fileID: 3729563772483918204, guid: 8fbcc622e7847f14a93b261be976dad6, type: 3}
       propertyPath: m_AnchorMin.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3797295962364552215, guid: 8fbcc622e7847f14a93b261be976dad6, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 869716144}
+    - target: {fileID: 3797295962364552215, guid: 8fbcc622e7847f14a93b261be976dad6, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetScale3
       objectReference: {fileID: 0}
     - target: {fileID: 3929140914654740194, guid: 8fbcc622e7847f14a93b261be976dad6, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1814,6 +1853,14 @@ PrefabInstance:
     - target: {fileID: 5682170481691162374, guid: 8fbcc622e7847f14a93b261be976dad6, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5902581161995045522, guid: 8fbcc622e7847f14a93b261be976dad6, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 869716144}
+    - target: {fileID: 5902581161995045522, guid: 8fbcc622e7847f14a93b261be976dad6, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetScale2
       objectReference: {fileID: 0}
     - target: {fileID: 6434021481436261606, guid: 8fbcc622e7847f14a93b261be976dad6, type: 3}
       propertyPath: m_AnchorMax.x
