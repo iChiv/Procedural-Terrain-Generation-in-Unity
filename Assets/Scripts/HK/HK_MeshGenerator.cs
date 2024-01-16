@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class MeshData
+public class MeshData2
 {
     public Vector3[] vertices;
     public int[] triangles;
@@ -9,7 +9,7 @@ public class MeshData
     
     int triangleIndex;
 
-    public MeshData(int meshWidth, int meshHeight)
+    public MeshData2(int meshWidth, int meshHeight)
     {
         vertices = new Vector3[meshWidth * meshHeight];
         uvs = new Vector2[meshWidth * meshHeight];
@@ -63,7 +63,7 @@ public class HK_MeshGenerator : MonoBehaviour
         
     }
 
-    public MeshData GenerateTrrainMesh(float[,] heightMap, float multiplier, AnimationCurve heightCurve, int levelOfDetail)
+    public MeshData2 GenerateTrrainMesh(float[,] heightMap, float multiplier, AnimationCurve heightCurve, int levelOfDetail)
     {
 
         int width = heightMap.GetLength(0);
@@ -75,7 +75,7 @@ public class HK_MeshGenerator : MonoBehaviour
         int meshSimplificationIncrement = (levelOfDetail==0) ? 1 : levelOfDetail * 2;
         int verticesPerLine = (width - 1) / meshSimplificationIncrement +1;
 
-        MeshData meshData = new MeshData(verticesPerLine, verticesPerLine);
+        MeshData2 meshData = new MeshData2(verticesPerLine, verticesPerLine);
 
         int i = 0;
 

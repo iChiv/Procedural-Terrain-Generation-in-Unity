@@ -126,7 +126,7 @@ public class NoisMapGenerator : MonoBehaviour
         meshHeightMultiplier2 = 50f;
     }
 
-    public void DrawMeshWithMaterial(MeshData meshData, Material material)
+    public void DrawMeshWithMaterial(MeshData2 meshData, Material material)
     {
         meshFilter.sharedMesh = meshData.CreatMesh();
         meshRenderer.sharedMaterial = material;
