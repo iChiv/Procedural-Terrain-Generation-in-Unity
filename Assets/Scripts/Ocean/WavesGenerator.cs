@@ -175,5 +175,20 @@ public class WavesGenerator : MonoBehaviour
             result.Apply();
         }
     }
+
+    public void SetScale1(float scale)
+    {
+        lengthScale0 = scale;
+    }
+
+    public void SetScale2(float scale)
+    {
+        lengthScale1 = scale;
+    }
+
+    public void SetScale3(float scale)
+    {
+        lengthScale2 = scale;
+    }
 }
 

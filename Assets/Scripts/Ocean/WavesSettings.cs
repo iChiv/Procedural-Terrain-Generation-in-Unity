@@ -77,4 +77,32 @@ public class WavesSettings : ScriptableObject
     readonly int G_PROP = Shader.PropertyToID("GravityAcceleration");
     readonly int DEPTH_PROP = Shader.PropertyToID("Depth");
     readonly int SPECTRUMS_PROP = Shader.PropertyToID("Spectrums");
+
+    public void SetGravity( float gravity) { g = gravity; }
+
+    public void SetFoamAmount( float foamAmount) { lambda = foamAmount; }
+
+    public void SetLocalScale( float localScale) { local.scale = localScale; }
+
+    public void SetLocalWindSpeed( float windSpeed) { local.windSpeed = windSpeed; }
+
+    public void SetLocalWindDirection( float windDirection) {  local.windDirection = windDirection; }
+
+    public void SetLocalSpreadBlend(float spreadBlend) { local.spreadBlend = spreadBlend; }
+
+    public void SetLocalSwell(float swell) { local.swell = swell; }
+
+    public void SetLocalShortWavesFade(float shortWavesFade) { local.shortWavesFade = shortWavesFade; }
+
+    public void SetSwellScale(float localScale) { swell.scale = localScale; }
+
+    public void SetSwellWindSpeed(float windSpeed) { swell.windSpeed = windSpeed; }
+
+    public void SetSwellWindDirection(float windDirection) { swell.windDirection = windDirection; }
+
+    public void SetSwellSpreadBlend(float spreadBlend) { swell.spreadBlend = spreadBlend; }
+
+    public void SetSwellSwell(float theSwell) { swell.swell = theSwell; }
+
+    public void SetSwellShortWavesFade(float shortWavesFade) { swell.shortWavesFade = shortWavesFade; }
 }
