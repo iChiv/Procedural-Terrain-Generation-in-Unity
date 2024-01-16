@@ -40,7 +40,9 @@ public class NoisMapGenerator : MonoBehaviour
     public float[] baseBlends;
 
     //mid-point displacement
+    public int size; //only 2^n is valid
     public float roughness;
+    public float meshHeightMultiplier2;
 
 
 
@@ -58,21 +60,29 @@ public class NoisMapGenerator : MonoBehaviour
         instance = this;
     }
 
+    void Start()
+    {
+        SetDefaltValueForPerlinNoise();
+        SetDefaltValueForMidPointDisplacement();
+        
+        GenerateMap();
+    }
+
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.G))
-        {
-            GenerateMap();
-        }
+        // if(Input.GetKeyDown(KeyCode.G))
+        // {
+        //     GenerateMap();
+        // }
 
-        GenerateMap();
+         GenerateMap();
     }
 
     //generate map
     public void GenerateMap()
     {
         float[,] noiseMap = PerlinNoise.instance.GeneratePerlinNoiseMap(mapWidth, mapHeight, seed, noiseScale, octaves, persistance, lacunarity, offset);
-        float[,] heightMap = MidPointDisplacement.instance.MidpointDisplacement(mapWidth, roughness, noiseScale, seed);
+        float[,] heightMap = MidPointDisplacement.instance.MidpointDisplacement(size, roughness, noiseScale, seed);
         Debug.Log(heightMap.Length);
         Color[] colourMap = new Color[mapWidth * mapHeight];
 
@@ -81,22 +91,44 @@ public class NoisMapGenerator : MonoBehaviour
         float maxHeight = meshHeightMultiplier * meshHeightCurve.Evaluate(1);
         SetMaterial(terrainMaterial, minHeight, maxHeight);
         ApplyToMaterial(terrainMaterial);
+        
         switch(terrainType)
         {
             case TerrainType.PerlinNoise:
+
                 DrawMeshWithMaterial(HK_MeshGenerator.instance.GenerateTrrainMesh(noiseMap, meshHeightMultiplier, meshHeightCurve, levelOfDetail), terrainMaterial);
                 break;
+
             case TerrainType.MidPointDisplacement:
-                DrawMeshWithMaterial(HK_MeshGenerator.instance.GenerateTrrainMesh(heightMap, meshHeightMultiplier, meshHeightCurve, levelOfDetail), terrainMaterial);
+
+                DrawMeshWithMaterial(HK_MeshGenerator.instance.GenerateTrrainMesh(heightMap, meshHeightMultiplier2, meshHeightCurve, levelOfDetail), terrainMaterial);
                 break;
         }
-        //DrawMeshWithMaterial(HK_MeshGenerator.instance.GenerateTrrainMesh(noiseMap, meshHeightMultiplier, meshHeightCurve, levelOfDetail), terrainMaterial);
-        //DrawMeshWithMaterial(HK_MeshGenerator.instance.GenerateTrrainMesh(heightMap, meshHeightMultiplier, meshHeightCurve, levelOfDetail), terrainMaterial);
     }
 
-    public void DrawMeshWithMaterial(MeshData meshData, Material material)
+    public void SetDefaltValueForPerlinNoise()
     {
-        meshFilter.sharedMesh = meshData.CreateMesh();
+        mapWidth = 128;
+        mapHeight = 128;
+        noiseScale = 20f;
+        octaves = 4;
+        persistance = 0.5f;
+        lacunarity = 2f;
+        seed = 0;
+        offset = new Vector2(0, 0);
+        meshHeightMultiplier = 30f;
+    }
+
+    public void SetDefaltValueForMidPointDisplacement()
+    {
+        size = 128;
+        roughness = 0.5f;
+        meshHeightMultiplier2 = 50f;
+    }
+
+    public void DrawMeshWithMaterial(MeshData2 meshData, Material material)
+    {
+        meshFilter.sharedMesh = meshData.CreatMesh();
         meshRenderer.sharedMaterial = material;
     }
 

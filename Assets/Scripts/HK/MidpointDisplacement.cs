@@ -9,6 +9,7 @@ public class MidPointDisplacement : MonoBehaviour
     {
         instance = this;
     }
+    
     public float[,] MidpointDisplacement(int size, float roughness, float noiseScale, int seed)
     {
         size = size + 1;
@@ -60,4 +61,6 @@ public class MidPointDisplacement : MonoBehaviour
         Debug.Log(heights.Length);
         return heights;
     }
+
+    
 }

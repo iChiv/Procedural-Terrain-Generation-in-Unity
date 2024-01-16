@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -18,11 +19,19 @@ public class PerlinNoise : MonoBehaviour
 
         System.Random prng = new System.Random(seed);
         Vector2[] octaveoffsets = new Vector2[octaves];
+
+        float maxPossibleHeight = 0;
+        float amplitude = 1;
+        float frequency = 1;
+
         for(int i = 0; i < octaves; i++)
         {
             float offsetX = prng.Next(-10000, 10000) + offset.x;
             float offsetY = prng.Next(-10000, 10000) + offset.y;
             octaveoffsets[i] = new Vector2(offsetX, offsetY);
+
+            maxPossibleHeight += amplitude;
+            amplitude *= persistance;
         }
 
         if(scale <= 0)
@@ -41,8 +50,8 @@ public class PerlinNoise : MonoBehaviour
         {
             for(int x = 0; x < mapWidth; x++)
             {
-                float amplitude = 1;
-                float frequency = 1;
+                amplitude = 1;
+                frequency = 1;
                 float noiseHeight = 0;
 
                 for(int i = 0; i < octaves; i++)

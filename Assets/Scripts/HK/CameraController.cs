@@ -17,6 +17,9 @@ public float zoomSpeed = 100f;
     }
     void Update()
     {
+        UseWASD();
+
+
         if(Input.GetKey(KeyCode.Space))
         {
             // 按下空格键时将摄像机位置重置为初始位置
@@ -66,4 +69,21 @@ public float zoomSpeed = 100f;
         currentPosition.z += scrollValue * zoomSpeed;
         transform.position = currentPosition;
     }
+
+    public void UseWASD()
+    {
+        float horizontalInput = Input.GetAxis("Horizontal");
+        float verticalInput = Input.GetAxis("Vertical");
+
+        // 计算移动方向
+        Vector3 moveDirection = new Vector3(horizontalInput, 0f, verticalInput).normalized;
+
+        // 将移动方向转换为相机空间
+        moveDirection = Camera.main.transform.TransformDirection(moveDirection);
+        //moveDirection.y = 0f; // 不允许上下移动
+
+        // 移动相机
+        transform.Translate(moveDirection * moveSpeed * 10 * Time.deltaTime, Space.World);
+    }
+
 }
